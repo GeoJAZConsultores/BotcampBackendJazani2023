@@ -23,4 +23,9 @@
     <Folder Include="Controllers\Admins\" />
     <Folder Include="Controllers\Generals\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Jazani.Infrastructure\Jazani.Infrastructure.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
