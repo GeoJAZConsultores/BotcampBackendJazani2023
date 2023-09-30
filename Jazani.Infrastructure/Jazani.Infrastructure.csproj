@@ -6,4 +6,22 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Admins\" />
+    <None Remove="Generals\" />
+    <None Remove="Admins\Configurations\" />
+    <None Remove="Admins\Persistences\" />
+    <None Remove="Cores\" />
+    <None Remove="Cores\Contexts\" />
+    <None Remove="Cores\Persistences\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Admins\" />
+    <Folder Include="Generals\" />
+    <Folder Include="Admins\Configurations\" />
+    <Folder Include="Admins\Persistences\" />
+    <Folder Include="Cores\" />
+    <Folder Include="Cores\Contexts\" />
+    <Folder Include="Cores\Persistences\" />
+  </ItemGroup>
 </Project>
