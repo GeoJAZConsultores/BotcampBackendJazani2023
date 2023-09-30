@@ -12,6 +12,9 @@
     <None Remove="Admins\Dtos\" />
     <None Remove="Admins\Services\" />
     <None Remove="Cores\" />
+    <None Remove="Admins\Dtos\Offices\" />
+    <None Remove="Admins\Dtos\Offices\Mappers\" />
+    <None Remove="Admins\Services\Implementations\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Admins\" />
@@ -19,5 +22,15 @@
     <Folder Include="Admins\Dtos\" />
     <Folder Include="Admins\Services\" />
     <Folder Include="Cores\" />
+    <Folder Include="Admins\Dtos\Offices\" />
+    <Folder Include="Admins\Dtos\Offices\Mappers\" />
+    <Folder Include="Admins\Services\Implementations\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Jazani.Domain\Jazani.Domain.csproj" />
   </ItemGroup>
 </Project>

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Jazani.Application.Admins.Dtos.Offices;
+using Jazani.Application.Admins.Services;
 using Microsoft.AspNetCore.Mvc;
-
-using Jazani.Domain.Admins.Models;
-using Jazani.Domain.Admins.Repositories;
 
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -15,26 +10,26 @@ namespace Jazani.Api.Controllers.Admins
     [Route("api/[controller]")]
     public class OfficeController : Controller
     {
-        private readonly IOfficeRepository _officeRepository;
+        private readonly IOfficeService _officeService;
 
-        public OfficeController(IOfficeRepository officeRepository)
+        public OfficeController(IOfficeService officeService)
         {
-            _officeRepository = officeRepository;
+            _officeService = officeService;
         }
 
 
         // GET: api/values
         [HttpGet]
-        public async Task<IEnumerable<Office>> Get()
+        public async Task<IEnumerable<OfficeDto>> Get()
         {
-            return await _officeRepository.FindAllAsync();
+            return await _officeService.FindAllAsync();
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public async Task<Office> Get(int id)
+        public async Task<OfficeDto> Get(int id)
         {
-            return await _officeRepository.FindByIdAsync(id);
+            return await _officeService.FindByIdAsync(id);
         }
 
         // POST api/values

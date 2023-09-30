@@ -1,4 +1,7 @@
-﻿using Jazani.Domain.Admins.Repositories;
+﻿using Jazani.Application.Admins.Dtos.Offices.Mappers;
+using Jazani.Application.Admins.Services;
+using Jazani.Application.Admins.Services.Implementations;
+using Jazani.Domain.Admins.Repositories;
 using Jazani.Infrastructure.Admins.Persistences;
 using Jazani.Infrastructure.Cores.Contexts;
 
@@ -18,6 +21,12 @@ builder.Services.AddDbContext<ApplicationDbContext>();
 
 // Domain - Infrastructure
 builder.Services.AddTransient<IOfficeRepository, OfficeRepository>();
+
+// Applications
+builder.Services.AddTransient<IOfficeService, OfficeService>();
+
+// AutoMapper
+builder.Services.AddAutoMapper(typeof(OfficeMapper));
 
 
 var app = builder.Build();
