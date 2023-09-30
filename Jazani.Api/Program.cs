@@ -1,8 +1,5 @@
-﻿using Jazani.Application.Admins.Dtos.Offices.Mappers;
-using Jazani.Application.Admins.Services;
-using Jazani.Application.Admins.Services.Implementations;
-using Jazani.Domain.Admins.Repositories;
-using Jazani.Infrastructure.Admins.Persistences;
+﻿
+using Jazani.Application.Cores.Contexts;
 using Jazani.Infrastructure.Cores.Contexts;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,17 +13,11 @@ builder.Services.AddSwaggerGen();
 
 
 // Infrastructure
-builder.Services.AddDbContext<ApplicationDbContext>();
+builder.Services.addInfrastructureServices(builder.Configuration);
 
-
-// Domain - Infrastructure
-builder.Services.AddTransient<IOfficeRepository, OfficeRepository>();
 
 // Applications
-builder.Services.AddTransient<IOfficeService, OfficeService>();
-
-// AutoMapper
-builder.Services.AddAutoMapper(typeof(OfficeMapper));
+builder.Services.AddApplicationServices();
 
 
 var app = builder.Build();

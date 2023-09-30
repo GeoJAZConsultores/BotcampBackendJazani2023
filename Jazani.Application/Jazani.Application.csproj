@@ -15,6 +15,7 @@
     <None Remove="Admins\Dtos\Offices\" />
     <None Remove="Admins\Dtos\Offices\Mappers\" />
     <None Remove="Admins\Services\Implementations\" />
+    <None Remove="Cores\Contexts\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Admins\" />
@@ -25,6 +26,7 @@
     <Folder Include="Admins\Dtos\Offices\" />
     <Folder Include="Admins\Dtos\Offices\Mappers\" />
     <Folder Include="Admins\Services\Implementations\" />
+    <Folder Include="Cores\Contexts\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
