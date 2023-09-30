@@ -1,0 +1,7 @@
+﻿@Jazani.Api_HostAddress = http://localhost:5193
+
+GET {{Jazani.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
