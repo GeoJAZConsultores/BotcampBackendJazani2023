@@ -1,4 +1,6 @@
-﻿using Jazani.Infrastructure.Cores.Contexts;
+﻿using Jazani.Domain.Admins.Repositories;
+using Jazani.Infrastructure.Admins.Persistences;
+using Jazani.Infrastructure.Cores.Contexts;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,10 @@ builder.Services.AddSwaggerGen();
 
 // Infrastructure
 builder.Services.AddDbContext<ApplicationDbContext>();
+
+
+// Domain - Infrastructure
+builder.Services.AddTransient<IOfficeRepository, OfficeRepository>();
 
 
 var app = builder.Build();
