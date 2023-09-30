@@ -6,6 +6,9 @@ namespace Jazani.Application.Admins.Services
 	{
 		Task<IReadOnlyList<OfficeDto>> FindAllAsync();
 		Task<OfficeDto?> FindByIdAsync(int id);
-	}
+		Task<OfficeDto> CreateAsync(OfficeSaveDto officeSaveDto);
+        Task<OfficeDto> EditAsync(int  id,OfficeSaveDto officeSaveDto);
+		Task<OfficeDto> DisabledAsync(int id);
+    }
 }
 
