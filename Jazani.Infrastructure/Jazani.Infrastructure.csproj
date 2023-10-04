@@ -14,6 +14,8 @@
     <None Remove="Cores\" />
     <None Remove="Cores\Contexts\" />
     <None Remove="Cores\Persistences\" />
+    <None Remove="Generals\Configurations\" />
+    <None Remove="Generals\Persistences\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Admins\" />
@@ -23,6 +25,8 @@
     <Folder Include="Cores\" />
     <Folder Include="Cores\Contexts\" />
     <Folder Include="Cores\Persistences\" />
+    <Folder Include="Generals\Configurations\" />
+    <Folder Include="Generals\Persistences\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.11" />

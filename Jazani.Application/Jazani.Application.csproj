@@ -16,6 +16,11 @@
     <None Remove="Admins\Dtos\Offices\Mappers\" />
     <None Remove="Admins\Services\Implementations\" />
     <None Remove="Cores\Contexts\" />
+    <None Remove="Generals\Dtos\" />
+    <None Remove="Generals\Services\" />
+    <None Remove="Generals\Dtos\MineralTypes\" />
+    <None Remove="Generals\Dtos\MineralTypes\Profiles\" />
+    <None Remove="Generals\Services\Implementations\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Admins\" />
@@ -27,6 +32,11 @@
     <Folder Include="Admins\Dtos\Offices\Mappers\" />
     <Folder Include="Admins\Services\Implementations\" />
     <Folder Include="Cores\Contexts\" />
+    <Folder Include="Generals\Dtos\" />
+    <Folder Include="Generals\Services\" />
+    <Folder Include="Generals\Dtos\MineralTypes\" />
+    <Folder Include="Generals\Dtos\MineralTypes\Profiles\" />
+    <Folder Include="Generals\Services\Implementations\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />

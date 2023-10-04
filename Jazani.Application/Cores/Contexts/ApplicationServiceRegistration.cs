@@ -2,6 +2,8 @@
 using Jazani.Application.Admins.Services;
 using Jazani.Application.Admins.Services.Implementations;
 using Microsoft.Extensions.DependencyInjection;
+using Jazani.Application.Generals.Services;
+using Jazani.Application.Generals.Services.Implementations;
 
 namespace Jazani.Application.Cores.Contexts
 {
@@ -13,7 +15,7 @@ namespace Jazani.Application.Cores.Contexts
 
 
 			services.AddTransient<IOfficeService, OfficeService>();
-
+			services.AddTransient<IMineralTypeService, MineralTypeService>();
 
             return services;
 		}
