@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
+using Jazani.Application.Cores.Exceptions;
 using Jazani.Application.Generals.Dtos.MineralTypes;
 using Jazani.Domain.Generals.Models;
 using Jazani.Domain.Generals.Repositories;
 
 namespace Jazani.Application.Generals.Services.Implementations
 {
-	public class MineralTypeService: IMineralTypeService
+    public class MineralTypeService : IMineralTypeService
     {
         private readonly IMineralTypeRepository _mineralTypeRepository;
         private readonly IMapper _mapper;
@@ -57,7 +58,10 @@ namespace Jazani.Application.Generals.Services.Implementations
 
         public async Task<MineralTypeDto?> FindByIdAsync(int id)
         {
-            MineralType mineralType = await _mineralTypeRepository.FindByIdAsync(id);
+            MineralType? mineralType = await _mineralTypeRepository.FindByIdAsync(id);
+
+            if (mineralType is null)
+               throw new NotFoundCoreException("Tipo de mineral no encontrado para el id: " + id);
 
             return _mapper.Map<MineralTypeDto>(mineralType);
         }
