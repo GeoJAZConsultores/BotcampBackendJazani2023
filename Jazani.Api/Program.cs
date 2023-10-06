@@ -1,6 +1,7 @@
 ﻿
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using FluentValidation.AspNetCore;
 using Jazani.Api.Filters;
 using Jazani.Api.Middlewares;
 using Jazani.Application.Cores.Contexts;
@@ -35,6 +36,7 @@ builder.Services.Configure<RouteOptions>(options =>
     
 });
 
+builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

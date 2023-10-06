@@ -7,10 +7,11 @@ namespace Jazani.Application.Generals.Dtos.MineralTypes.Validators
 		public MineralTypeValidator()
 		{
 			RuleFor(x => x.Name)
-				.NotNull()
-				.NotEmpty();
+				//.NotNull().WithMessage("Name required")
+                    .Length(1, 250)
+					.WithMessage("Name should be between 10 and 15 chars");
 
-		}
+        }
 	}
 }
 
