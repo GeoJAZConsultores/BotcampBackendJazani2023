@@ -17,11 +17,15 @@
     <None Remove="Controllers\" />
     <None Remove="Controllers\Admins\" />
     <None Remove="Controllers\Generals\" />
+    <None Remove="Filters\" />
+    <None Remove="Exceptions\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Controllers\Admins\" />
     <Folder Include="Controllers\Generals\" />
+    <Folder Include="Filters\" />
+    <Folder Include="Exceptions\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Jazani.Infrastructure\Jazani.Infrastructure.csproj">
