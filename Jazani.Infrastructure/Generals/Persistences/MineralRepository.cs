@@ -31,6 +31,25 @@ namespace Jazani.Infrastructure.Generals.Persistences
                 .FirstOrDefaultAsync(t => t.Id == id);
         }
 
+
+        public async override Task<Mineral> SaveAsync(Mineral entity)
+        {
+            EntityState state = _dbContext.Entry(entity).State;
+
+            // entity.MineralType = await _dbContext.Set<MineralType>().FindAsync(entity.MineraltypeId);
+            _ = state switch
+            {
+                EntityState.Detached => _dbContext.Set<Mineral>().Add(entity),
+                EntityState.Modified => _dbContext.Set<Mineral>().Update(entity)
+
+            };
+
+            await _dbContext.SaveChangesAsync();
+
+            //return entity;
+
+            return await FindByIdAsync(entity.Id);
+        }
     }
 }
 

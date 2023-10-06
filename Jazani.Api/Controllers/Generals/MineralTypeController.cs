@@ -1,5 +1,7 @@
-﻿using Jazani.Application.Generals.Dtos.MineralTypes;
+﻿using Jazani.Api.Exceptions;
+using Jazani.Application.Generals.Dtos.MineralTypes;
 using Jazani.Application.Generals.Services;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -26,16 +28,23 @@ namespace Jazani.Api.Controllers.Generals
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public async Task<MineralTypeDto> Get(int id)
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MineralTypeDto))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ErrorModel))]
+        public async Task<Results<NotFound,Ok<MineralTypeDto>>> Get(int id)
         {
-            return await _mineralTypeService.FindByIdAsync(id);
+            var response = await _mineralTypeService.FindByIdAsync(id);
+
+            return TypedResults.Ok(response);
         }
 
         // POST api/values
         [HttpPost]
-        public async Task<MineralTypeDto> Post([FromBody] MineralTypeSaveDto saveDto)
+        [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(MineralTypeDto))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorResponse))]
+        public async Task<Results<BadRequest, CreatedAtRoute<MineralTypeDto>>> Post([FromBody] MineralTypeSaveDto saveDto)
         {
-            return await _mineralTypeService.CreateAsync(saveDto);
+            var response = await _mineralTypeService.CreateAsync(saveDto);
+            return TypedResults.CreatedAtRoute(response);
         }
 
         // PUT api/values/5
