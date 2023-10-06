@@ -21,6 +21,9 @@
     <None Remove="Generals\Dtos\MineralTypes\" />
     <None Remove="Generals\Dtos\MineralTypes\Profiles\" />
     <None Remove="Generals\Services\Implementations\" />
+    <None Remove="Generals\Dtos\Minerals\" />
+    <None Remove="Generals\Dtos\Minerals\Profiles\" />
+    <None Remove="Generals\Dtos\MineralTypes\Validators\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Admins\" />
@@ -37,10 +40,15 @@
     <Folder Include="Generals\Dtos\MineralTypes\" />
     <Folder Include="Generals\Dtos\MineralTypes\Profiles\" />
     <Folder Include="Generals\Services\Implementations\" />
+    <Folder Include="Generals\Dtos\Minerals\" />
+    <Folder Include="Generals\Dtos\Minerals\Profiles\" />
+    <Folder Include="Generals\Dtos\MineralTypes\Validators\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Jazani.Domain\Jazani.Domain.csproj" />

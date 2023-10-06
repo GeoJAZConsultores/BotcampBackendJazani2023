@@ -33,9 +33,19 @@ namespace Jazani.Api.Controllers.Generals
 
         // POST api/values
         [HttpPost]
-        public async Task<MineralTypeDto> Post([FromBody] MineralTypeSaveDto saveDto)
+        public async Task<IResult> Post([FromBody] MineralTypeSaveDto saveDto)
         {
-            return await _mineralTypeService.CreateAsync(saveDto);
+            if (!ModelState.IsValid)
+            {
+                var rs = ModelState.Where(x => x.Value?.Errors.Count > 0).ToArray();
+
+                return Results.BadRequest(rs);
+
+            }
+
+            var response = await _mineralTypeService.CreateAsync(saveDto);
+
+            return Results.Ok(response);
         }
 
         // PUT api/values/5

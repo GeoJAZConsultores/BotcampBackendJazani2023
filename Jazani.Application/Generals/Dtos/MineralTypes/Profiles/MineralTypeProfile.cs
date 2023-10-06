@@ -8,6 +8,7 @@ namespace Jazani.Application.Generals.Dtos.MineralTypes.Profiles
 		public MineralTypeProfile()
 		{
 			CreateMap<MineralType, MineralTypeDto>();
+			CreateMap<MineralType, MineralTypeSimpleDto>();
 
 			CreateMap<MineralType, MineralTypeSaveDto>().ReverseMap();
 		}
