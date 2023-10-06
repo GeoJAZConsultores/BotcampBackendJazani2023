@@ -3,6 +3,7 @@ using Jazani.Application.Cores.Exceptions;
 using Jazani.Application.Generals.Dtos.MineralTypes;
 using Jazani.Domain.Generals.Models;
 using Jazani.Domain.Generals.Repositories;
+using Microsoft.Extensions.Logging;
 
 namespace Jazani.Application.Generals.Services.Implementations
 {
@@ -10,11 +11,13 @@ namespace Jazani.Application.Generals.Services.Implementations
     {
         private readonly IMineralTypeRepository _mineralTypeRepository;
         private readonly IMapper _mapper;
+        private readonly ILogger<MineralTypeService> _logger;
 
-        public MineralTypeService(IMineralTypeRepository mineralTypeRepository, IMapper mapper)
+        public MineralTypeService(IMineralTypeRepository mineralTypeRepository, IMapper mapper, ILogger<MineralTypeService> logger)
         {
             _mineralTypeRepository = mineralTypeRepository;
             _mapper = mapper;
+            _logger = logger;
         }
 
         public async Task<MineralTypeDto> CreateAsync(MineralTypeSaveDto saveDto)
@@ -65,7 +68,13 @@ namespace Jazani.Application.Generals.Services.Implementations
         {
             MineralType? mineralType = await _mineralTypeRepository.FindByIdAsync(id);
 
-            if (mineralType is null) throw MineralTypeNotFound(id);
+            if (mineralType is null)
+            {
+                _logger.LogWarning("Tipo de mineral no encontrado para el id: " + id);
+                throw MineralTypeNotFound(id);
+            }
+
+            _logger.LogInformation("Tipo de minaral {name}", mineralType.Name);
 
             return _mapper.Map<MineralTypeDto>(mineralType);
         }
