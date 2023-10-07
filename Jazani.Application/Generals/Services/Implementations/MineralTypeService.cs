@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Jazani.Application.Cores.Exceptions;
 using Jazani.Application.Generals.Dtos.MineralTypes;
+using Jazani.Core.Paginations;
 using Jazani.Domain.Generals.Models;
 using Jazani.Domain.Generals.Repositories;
 using Microsoft.Extensions.Logging;
@@ -78,6 +79,15 @@ namespace Jazani.Application.Generals.Services.Implementations
 
             return _mapper.Map<MineralTypeDto>(mineralType);
         }
+
+        public async Task<ResponsePagination<MineralTypeDto>> PaginatedSearch(RequestPagination<MineralTypeFilterDto> request)
+        {
+            var entity = _mapper.Map<RequestPagination<MineralType>>(request);
+            var response = await _mineralTypeRepository.PaginatedSearch(entity);
+
+            return _mapper.Map<ResponsePagination<MineralTypeDto>>(response);
+        }
+
 
 
         private NotFoundCoreException MineralTypeNotFound(int id)

@@ -16,6 +16,7 @@
     <None Remove="Generals\Repositories\" />
     <None Remove="Cores\Repositories\" />
     <None Remove="Cores\Models\" />
+    <None Remove="Cores\Paginations\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Admins\" />
@@ -27,5 +28,9 @@
     <Folder Include="Generals\Repositories\" />
     <Folder Include="Cores\Repositories\" />
     <Folder Include="Cores\Models\" />
+    <Folder Include="Cores\Paginations\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Jazani.Core\Jazani.Core.csproj" />
   </ItemGroup>
 </Project>

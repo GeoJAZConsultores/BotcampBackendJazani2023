@@ -1,6 +1,7 @@
 ﻿using Jazani.Api.Exceptions;
 using Jazani.Application.Generals.Dtos.MineralTypes;
 using Jazani.Application.Generals.Services;
+using Jazani.Core.Paginations;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
@@ -59,6 +60,12 @@ namespace Jazani.Api.Controllers.Generals
         public async Task<MineralTypeDto> Delete(int id)
         {
             return await _mineralTypeService.DisabledAsync(id);
+        }
+
+        [HttpGet("PaginatedSearch")]
+        public async Task<ResponsePagination<MineralTypeDto>> PaginatedSearch([FromQuery] RequestPagination<MineralTypeFilterDto> request)
+        {
+            return await _mineralTypeService.PaginatedSearch(request);
         }
     }
 }

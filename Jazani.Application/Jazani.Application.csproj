@@ -60,5 +60,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Jazani.Domain\Jazani.Domain.csproj" />
+    <ProjectReference Include="..\Jazani.Core\Jazani.Core.csproj" />
   </ItemGroup>
 </Project>

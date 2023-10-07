@@ -17,6 +17,7 @@
     <None Remove="Generals\Configurations\" />
     <None Remove="Generals\Persistences\" />
     <None Remove="Cores\Converters\" />
+    <None Remove="Cores\Paginations\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Admins\" />
@@ -29,6 +30,7 @@
     <Folder Include="Generals\Configurations\" />
     <Folder Include="Generals\Persistences\" />
     <Folder Include="Cores\Converters\" />
+    <Folder Include="Cores\Paginations\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.11" />
@@ -37,5 +39,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Jazani.Domain\Jazani.Domain.csproj" />
+    <ProjectReference Include="..\Jazani.Core\Jazani.Core.csproj" />
   </ItemGroup>
 </Project>
