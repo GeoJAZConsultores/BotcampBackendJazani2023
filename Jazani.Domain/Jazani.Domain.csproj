@@ -15,6 +15,7 @@
     <None Remove="Generals\Models\" />
     <None Remove="Generals\Repositories\" />
     <None Remove="Cores\Repositories\" />
+    <None Remove="Cores\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Admins\" />
@@ -25,5 +26,6 @@
     <Folder Include="Generals\Models\" />
     <Folder Include="Generals\Repositories\" />
     <Folder Include="Cores\Repositories\" />
+    <Folder Include="Cores\Models\" />
   </ItemGroup>
 </Project>

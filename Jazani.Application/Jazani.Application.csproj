@@ -25,6 +25,9 @@
     <None Remove="Generals\Dtos\Minerals\Profiles\" />
     <None Remove="Generals\Dtos\MineralTypes\Validators\" />
     <None Remove="Cores\Exceptions\" />
+    <None Remove="Cores\Services\" />
+    <None Remove="Generals\Dtos\PersonTypes\" />
+    <None Remove="Generals\Dtos\PersonTypes\Profiles\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Admins\" />
@@ -45,6 +48,9 @@
     <Folder Include="Generals\Dtos\Minerals\Profiles\" />
     <Folder Include="Generals\Dtos\MineralTypes\Validators\" />
     <Folder Include="Cores\Exceptions\" />
+    <Folder Include="Cores\Services\" />
+    <Folder Include="Generals\Dtos\PersonTypes\" />
+    <Folder Include="Generals\Dtos\PersonTypes\Profiles\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />

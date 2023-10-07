@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Jazani.Application.Cores.Exceptions;
 using Jazani.Application.Generals.Dtos.Minerals;
 using Jazani.Domain.Generals.Models;
 using Jazani.Domain.Generals.Repositories;
@@ -30,7 +31,10 @@ namespace Jazani.Application.Generals.Services.Implementations
 
         public async Task<MineralDto> DisabledAsync(int id)
         {
-            Mineral mineral = await _mineralRepository.FindByIdAsync(id);
+            Mineral? mineral = await _mineralRepository.FindByIdAsync(id);
+
+            if (mineral is null) throw MineralNotFound(id);
+
             mineral.State = false;
 
             await _mineralRepository.SaveAsync(mineral);
@@ -40,7 +44,10 @@ namespace Jazani.Application.Generals.Services.Implementations
 
         public async Task<MineralDto> EditAsync(int id, MineralSaveDto saveDto)
         {
-            Mineral mineral = await _mineralRepository.FindByIdAsync(id);
+            Mineral? mineral = await _mineralRepository.FindByIdAsync(id);
+
+            if (mineral is null) throw MineralNotFound(id);
+
 
             _mapper.Map<MineralSaveDto, Mineral>(saveDto, mineral);
 
@@ -56,11 +63,18 @@ namespace Jazani.Application.Generals.Services.Implementations
             return _mapper.Map<IReadOnlyList<MineralDto>>(minerals);
         }
 
-        public async Task<MineralDto?> FindByIdAsync(int id)
+        public async Task<MineralDto> FindByIdAsync(int id)
         {
-            Mineral mineral = await _mineralRepository.FindByIdAsync(id);
+            Mineral? mineral = await _mineralRepository.FindByIdAsync(id);
+
+            if (mineral is null) throw MineralNotFound(id);
 
             return _mapper.Map<MineralDto>(mineral);
+        }
+
+        private NotFoundCoreException MineralNotFound(int id)
+        {
+            return new NotFoundCoreException("Mineral no encontrado para el id: " + id);
         }
     }
 }
