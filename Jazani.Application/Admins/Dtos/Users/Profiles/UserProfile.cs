@@ -8,6 +8,7 @@ namespace Jazani.Application.Admins.Dtos.Users.Profiles
 		public UserProfile()
 		{
 			CreateMap<User, UserDto>();
+			CreateMap<User, UserSecurityDto>();
 
 			CreateMap<User, UserSaveDto>().ReverseMap();
 		}

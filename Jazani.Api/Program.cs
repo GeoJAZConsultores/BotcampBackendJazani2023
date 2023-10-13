@@ -1,4 +1,5 @@
 ﻿
+using System.Text;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using FluentValidation.AspNetCore;
@@ -8,8 +9,11 @@ using Jazani.Application.Cores.Contexts;
 using Jazani.Core.Securities.Services;
 using Jazani.Core.Securities.Services.Implementations;
 using Jazani.Infrastructure.Cores.Contexts;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using Serilog.Events;
 
@@ -55,6 +59,27 @@ builder.Services.Configure<PasswordHasherOptions>(options =>
 // ISecurityService
 builder.Services.AddTransient<ISecurityService, SecurityService>();
 
+
+//JWT
+string jwtSecretKey = builder.Configuration.GetSection("Security:JwtSecrectKey").Get<string>();
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    byte[] key = Encoding.ASCII.GetBytes(jwtSecretKey);
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateLifetime = true,
+        ValidIssuer = "",
+        ValidAudience = "",
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ValidateIssuerSigningKey = true
+    };
+});
 
 // Infrastructure
 builder.Services.addInfrastructureServices(builder.Configuration);

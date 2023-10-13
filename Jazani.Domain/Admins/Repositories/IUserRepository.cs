@@ -6,6 +6,7 @@ namespace Jazani.Domain.Admins.Repositories
 {
 	public interface IUserRepository : ICrudRepository<User, int>
 	{
-	}
+        Task<User?> FindByEmailAsync(string email);
+    }
 }
 

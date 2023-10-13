@@ -11,12 +11,14 @@
     <None Remove="Securities\" />
     <None Remove="Securities\Services\" />
     <None Remove="Securities\Services\Implementations\" />
+    <None Remove="Securities\Etities\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Paginations\" />
     <Folder Include="Securities\" />
     <Folder Include="Securities\Services\" />
     <Folder Include="Securities\Services\Implementations\" />
+    <Folder Include="Securities\Etities\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.12" />

@@ -1,4 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Jazani.Core.Securities.Etities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace Jazani.Core.Securities.Services.Implementations
 {
@@ -21,6 +26,45 @@ namespace Jazani.Core.Securities.Services.Implementations
             if (result == PasswordVerificationResult.Success) return true;
 
             return false;
+        }
+
+        public SecurityEntity JwtSecurity(string jwtSecrectKey)
+        {
+            DateTime utcNow = DateTime.UtcNow;
+
+            List<Claim> claims = new List<Claim>
+            {
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim(JwtRegisteredClaimNames.Iat, utcNow.ToString())
+            };
+
+            DateTime expireDateTime = utcNow.AddDays(1);
+
+            JwtSecurityTokenHandler jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
+
+            // Key + credentials
+
+            byte[] key = Encoding.ASCII.GetBytes(jwtSecrectKey);
+            SymmetricSecurityKey symmetricSecurityKey = new SymmetricSecurityKey(key);
+            SigningCredentials signingCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256);
+
+
+            JwtSecurityToken jwtSecurityToken = new JwtSecurityToken(
+                claims: claims,
+                expires:expireDateTime,
+                notBefore: utcNow,
+                signingCredentials: signingCredentials
+                );
+
+            string token = jwtSecurityTokenHandler.WriteToken(jwtSecurityToken);
+
+
+            return new SecurityEntity()
+            {
+                TokenType = "Bearer",
+                AccesTocken = token,
+                ExpireOn = expireDateTime
+            };
         }
     }
 }

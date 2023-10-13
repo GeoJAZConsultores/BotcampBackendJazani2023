@@ -6,6 +6,7 @@ namespace Jazani.Application.Admins.Services
 {
 	public interface IUserService : ISaveService<UserDto, UserSaveDto, int>
     {
+		Task<UserSecurityDto> LoginAsync(UserAuthDto userAuth);
 	}
 }
 
