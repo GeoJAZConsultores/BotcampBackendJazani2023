@@ -28,6 +28,8 @@
     <None Remove="Cores\Services\" />
     <None Remove="Generals\Dtos\PersonTypes\" />
     <None Remove="Generals\Dtos\PersonTypes\Profiles\" />
+    <None Remove="Admins\Dtos\Users\" />
+    <None Remove="Admins\Dtos\Users\Profiles\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Admins\" />
@@ -51,6 +53,8 @@
     <Folder Include="Cores\Services\" />
     <Folder Include="Generals\Dtos\PersonTypes\" />
     <Folder Include="Generals\Dtos\PersonTypes\Profiles\" />
+    <Folder Include="Admins\Dtos\Users\" />
+    <Folder Include="Admins\Dtos\Users\Profiles\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />

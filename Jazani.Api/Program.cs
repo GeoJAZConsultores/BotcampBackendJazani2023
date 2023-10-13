@@ -5,7 +5,11 @@ using FluentValidation.AspNetCore;
 using Jazani.Api.Filters;
 using Jazani.Api.Middlewares;
 using Jazani.Application.Cores.Contexts;
+using Jazani.Core.Securities.Services;
+using Jazani.Core.Securities.Services.Implementations;
 using Jazani.Infrastructure.Cores.Contexts;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using Serilog.Events;
 
@@ -41,6 +45,15 @@ builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsi
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// PasswordHasher
+builder.Services.Configure<PasswordHasherOptions>(options =>
+{
+    options.CompatibilityMode = PasswordHasherCompatibilityMode.IdentityV3;
+});
+
+// ISecurityService
+builder.Services.AddTransient<ISecurityService, SecurityService>();
 
 
 // Infrastructure
