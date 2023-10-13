@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Jazani.Application.Admins.Dtos.Users;
 using Jazani.Application.Admins.Services;
 using Jazani.Api.Exceptions;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -24,6 +25,7 @@ namespace Jazani.Api.Controllers.Admins
 
         // POST api/values
         [HttpPost("Login")]
+        [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserSecurityDto))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorValidationModel))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ErrorModel))]
